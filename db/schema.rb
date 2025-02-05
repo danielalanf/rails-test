@@ -18,9 +18,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_04_210023) do
     t.bigint "product_id", null: false
     t.bigint "order_id", null: false
     t.integer "quantity", null: false
-    t.decimal "value_in_cents"
-    t.decimal "ammount_in_cents"
-    t.string "status"
+    t.integer "value_in_cents"
+    t.integer "ammount_in_cents"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_carts_on_order_id"
@@ -29,8 +29,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_04_210023) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "quantity"
-    t.decimal "ammount_in_cents"
-    t.string "status"
+    t.integer "ammount_in_cents"
+    t.integer "status"
     t.bigint "payment_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,7 +44,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_04_210023) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "name", limit: 200, null: false
+    t.string "name", limit: 100, null: false
     t.string "description"
     t.integer "value_in_cents", null: false
     t.integer "discount"

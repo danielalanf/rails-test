@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (5.5.0)
+      concurrent-ruby (~> 1.0)
     actioncable (8.0.1)
       actionpack (= 8.0.1)
       activesupport (= 8.0.1)
@@ -118,7 +120,8 @@ GEM
     factory_bot_rails (6.4.4)
       factory_bot (~> 6.5)
       railties (>= 5.0.0)
-    ffaker (2.24.0)
+    faker (3.5.1)
+      i18n (>= 1.8.11, < 2)
     fugit (1.11.1)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
@@ -415,13 +418,14 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  aasm
   activerecord (~> 8.0.1)
   bootsnap
   brakeman
   capybara
   debug
   factory_bot_rails
-  ffaker
+  faker
   importmap-rails
   jbuilder
   kamal

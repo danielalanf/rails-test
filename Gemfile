@@ -21,6 +21,9 @@ gem "activerecord", "~> 8.0.1"
 gem "sidekiq"
 gem "sidekiq-scheduler"
 
+# state machine
+gem 'aasm'
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
@@ -59,7 +62,7 @@ group :development, :test do
   gem "rspec-benchmark"
   gem "factory_bot_rails"
   # Use for fake names in factories
-  gem "ffaker"
+  gem "faker"
 end
 
 group :development do
