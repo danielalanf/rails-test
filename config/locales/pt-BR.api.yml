@@ -1,0 +1,7 @@
+pt-BR:
+  api:
+    errors:
+      filled?: deve ser preenchido
+      filled_in_types?: "deve ser preenchido nesses tipos: %{types}"
+      invalid?: inválido
+      invalid_format?: formato inválido

@@ -36,12 +36,12 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
       expect(JSON.parse(response.body)['error']).to eq("not_found")
     end
 
-    it 'returns a 404 if the order is not found' do
+    it 'returns a 400 if params is invalid' do
       get :show, params: { id: "" }
 
-      # Verifica se o status HTTP da resposta é 404 (Not Found)
-      expect(response.status).to eq(404)
-      expect(JSON.parse(response.body)['error']).to eq("not_found")
+      # Verifica se o status HTTP da resposta é 400
+      expect(response.status).to eq(400)
+      expect(JSON.parse(response.body)["message"]).to eq("id deve ser preenchido")
     end
   end
 end
