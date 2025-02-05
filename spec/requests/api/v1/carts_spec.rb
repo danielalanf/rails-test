@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Api::V1::Carts", type: :request do
-  let!(:order) { Order.create!(status: "pending") }
+  let!(:order) { create(:order) }
   let!(:carts) { create_list(:cart, 3, order: order) }
 
   describe "GET /api/v1/orders/:order_id/carts" do

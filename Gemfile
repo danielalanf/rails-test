@@ -24,6 +24,9 @@ gem "sidekiq-scheduler"
 # state machine
 gem "aasm"
 
+# dry
+gem "dry-validation"
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
