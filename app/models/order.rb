@@ -1,28 +1,22 @@
 # frozen_string_literal: true
 
 class Order < ApplicationRecord
-  include OrderStatusTransitions  # Incluindo o concern para status
+  # include OrderStatusTransitions  # Incluindo o concern para status
 
-  enum status: {
-    # Criação e Pagamento
-    pending: 0, # → Criada, aguardando pagamento.
-    payment_failed: 1, # → Pagamento recusado.
-    paid: 2, # → Pagamento confirmado.
-    # Processamento
-    processing: 3, # → Pedido sendo processado pelo sistema.
-    canceled: 4, # → Pedido cancelado antes do envio.
-    # Envio e Entrega
-    shipped: 5, # → Pedido enviado para o cliente.
-    out_for_delivery: 6, # → Pedido saiu para entrega.
-    delivered: 7, # → Pedido entregue ao cliente.
-    # Pós-Entrega
-    returned: 8, # → Cliente devolveu o pedido.
-    refunded: 9 # → Reembolso processado.
-  }
+  # enum status: {
+  #   pending: 0,
+  #   payment_failed: 1,
+  #   paid: 2,
+  #   processing: 3,
+  #   canceled: 4,
+  #   shipped: 5,
+  #   out_for_delivery: 6,
+  #   delivered: 7,
+  #   returned: 8,
+  #   refunded: 9
+  # }
 
   has_many :carts, dependent: :destroy
-
-  scope :without_status, -> { where(status: nil) }
 
   before_create :set_initial_status
 
@@ -33,3 +27,18 @@ class Order < ApplicationRecord
     self.status ||= :pending
   end
 end
+
+# Criação e Pagamento
+# pending → Criada, aguardando pagamento.
+# payment_failed → Pagamento recusado.
+# paid → Pagamento confirmado.
+# Processamento
+# processing → Pedido sendo processado pelo sistema.
+# canceled → Pedido cancelado antes do envio.
+# Envio e Entrega
+# shipped → Pedido enviado para o cliente.
+# out_for_delivery → Pedido saiu para entrega.
+# delivered → Pedido entregue ao cliente.
+# Pós-Entrega
+# returned → Cliente devolveu o pedido.
+# refunded → Reembolso processado.

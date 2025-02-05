@@ -6,6 +6,6 @@ class Product < ApplicationRecord
   validates_presence_of :name, :value_in_cents
 
   def value
-    value_in_cents - ((value_in_cents / 100) * discount || 1)
+    value_in_cents - ((value_in_cents / 100) * (discount || 1))
   end
 end
