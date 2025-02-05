@@ -1,0 +1,15 @@
+:concurrency: 10
+:scheduler:
+  :schedule:
+    print_my_job:
+      class: "MyJob"
+      queue: default
+      cron: "* * * * *" # Executa a cada 1 minuto
+      description:
+        "Executa meu job a cada 1 minuto"
+
+:queues:
+  - [critical, 5]
+  - [default, 3]
+  - [low, 1]
+  - mailers
