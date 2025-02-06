@@ -17,6 +17,6 @@ class CancelCart
   attr_accessor :ids
 
   def set_status(cart)
-    cart.update!(status: "morto")
+    cart.abandon!
   end
 end

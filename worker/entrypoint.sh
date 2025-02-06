@@ -1,3 +1,3 @@
 #! /bin/bash
 
-sidekiq -c 20
+sidekiq -c 1

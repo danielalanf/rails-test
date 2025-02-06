@@ -4,13 +4,13 @@ require "sidekiq-scheduler"
 
 class MyJob < ApplicationJob
   def perform(*args)
-    puts "INICIANDO JOB"
-    CancelCart.new(find_cart_without_status).call
+    puts " ----- INICIANDO JOB ----- "
+    CancelCart.new(find_cart_inactive).call
   end
 
   private
 
-  def find_cart_without_status
-    Cart.without_status.map(&:id)
+  def find_cart_inactive
+    Cart.inactive.map(&:id)
   end
 end

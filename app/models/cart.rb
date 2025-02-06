@@ -1,29 +1,30 @@
 # frozen_string_literal: true
 
 class Cart < ApplicationRecord
-  # include CartStatusTransitions  # Incluindo o concern para status
+  include CartStatusTransitions  # Incluindo o concern para status
 
-  # enum status: {
-  #   active: 0,
-  #   abandoned: 1,
-  #   expired: 2,
-  #   converted: 3,
-  #   reserved: 4,
-  #   failed_payment: 5
-  # }
+  enum :status,
+    active: 0,
+    abandoned: 1,
+    expired: 2,
+    converted: 3,
+    reserved: 4,
+    failed_payment: 5
 
   belongs_to :product
   belongs_to :order
 
-  before_create :set_initial_values
+  before_save :calculate_values
+
+  scope :abandoned, -> { where(status: "abandoned") }
+  scope :inactive, -> { where(status: "active").where("updated_at < ?", Time.zone.now-3.minutes) }
 
   private
 
   # Adiciona o status, valor do produto e total do carrinho
-  def set_initial_values
+  def calculate_values
     self.value_in_cents = product.value
     self.ammount_in_cents = self.quantity * self.value_in_cents
-    self.status ||= :active
   end
 end
 

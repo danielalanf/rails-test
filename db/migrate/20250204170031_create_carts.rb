@@ -8,7 +8,7 @@ class CreateCarts < ActiveRecord::Migration[8.0]
       t.integer :quantity, null: false
       t.integer :value_in_cents
       t.integer :ammount_in_cents
-      t.integer :status
+      t.integer :status, default: 0, null: false
       t.timestamps
     end
   end

@@ -10,4 +10,8 @@ if [ -f tmp/pids/server.pid ]; then
   rm tmp/pids/server.pid
 fi
 
+if [ "$RAILS_ENV" == development]; then
+  echo ' --> Skip migrations for Dev env'
+fi
+
 exec "$@" # command from docker-compose

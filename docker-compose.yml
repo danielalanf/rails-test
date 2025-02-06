@@ -11,7 +11,7 @@ services:
       TERM: xterm-256color
 
   database:
-    image: postgres:14
+    image: postgres:17
     environment:
       TZ: America/Fortaleza
       POSTGRES_PASSWORD: postgres

@@ -1,31 +1,24 @@
 # frozen_string_literal: true
 
 class Order < ApplicationRecord
-  # include OrderStatusTransitions  # Incluindo o concern para status
+  # include concern state machine
+  include OrderStatusTransitions
 
-  # enum status: {
-  #   pending: 0,
-  #   payment_failed: 1,
-  #   paid: 2,
-  #   processing: 3,
-  #   canceled: 4,
-  #   shipped: 5,
-  #   out_for_delivery: 6,
-  #   delivered: 7,
-  #   returned: 8,
-  #   refunded: 9
-  # }
+  enum :status,
+    pending: 0,
+    payment_failed: 1,
+    paid: 2,
+    processing: 3,
+    canceled: 4,
+    shipped: 5,
+    out_for_delivery: 6,
+    delivered: 7,
+    returned: 8,
+    refunded: 9
 
   has_many :carts, dependent: :destroy
 
-  before_create :set_initial_status
-
   private
-
-  def set_initial_status
-    # Define o status inicial como 'pending' antes de criar a Order
-    self.status ||= :pending
-  end
 end
 
 # Criação e Pagamento
