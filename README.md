@@ -35,3 +35,38 @@ rake db:create
 * Instalar o Docker
 
 * Buidar imagem da Aplicação
+
+* Comandos docker
+Builda a imagem (rodar dentro da pasta do projeto)
+ ```
+ docker-compose build
+```
+
+Sobe o container
+ ```
+ docker-compose up
+ ```
+ ou
+  ```
+ docker-compose up -d
+```
+
+remove as imagens por ID
+ ```
+ docker rmi -f < IMAGE_ID >
+```
+
+Verifica os container
+ ```
+ docker ps -a
+```
+
+Parar todos os contêineres em execução
+```
+docker stop $(docker ps -aq)
+```
+
+Excluir todos os contêineres parados
+```
+docker rm -f $(docker ps -aq)
+```
