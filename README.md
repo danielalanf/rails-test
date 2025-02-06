@@ -32,4 +32,6 @@ rake db:create
 
 * Deployment instructions
 
-* ...
+* Instalar o Docker
+
+* Buidar imagem da Aplicação
