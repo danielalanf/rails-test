@@ -12,12 +12,17 @@ Things you may want to cover:
 * Configuration
 
 Adicionar usuario postgres
+```
 sudo -u postgres createuser -s postgres
 sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD 'postgres';"
+```
 
 * Database creation
 
-rodar o comando: rake db:create
+rodar o comando
+```
+rake db:create
+```
 
 * Database initialization
 
