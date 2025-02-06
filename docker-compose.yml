@@ -37,3 +37,15 @@ services:
       - .:/home/app/web
     ports:
       - '3000:3000'
+
+  worker:
+    build:
+      context: .
+      dockerfile: ./worker/Dockerfile
+    environment:
+      TZ: America/Fortaleza
+      TERM: xterm-256color
+    env_file:
+     - ./.env.development
+    volumes:
+     - .:/home/app/web
